@@ -1,4 +1,13 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm turbo run build"
+  "buildCommand": "pnpm turbo run build",
+  "functions": {
+    "apps/api/index.ts": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "apps/api/index.ts" },
+    { "src": "/(.*)", "dest": "apps/web/$1" }
+  ]
 }
