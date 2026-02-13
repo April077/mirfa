@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm turbo run build",
+  "buildCommand": "pnpm turbo run build --filter=web --filter=api",
   "outputDirectory": "apps/web/.next",
   "functions": {
     "apps/api/index.ts": {
