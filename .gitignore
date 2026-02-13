@@ -3,3 +3,8 @@ node_modules/
 .vscode/
 .env
 dist/
+
+.turbo/
+**/.turbo/
+dist/
+.next/
