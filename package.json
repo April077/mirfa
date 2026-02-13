@@ -1,0 +1,16 @@
+{
+  "name": "mirfa-secure-tx",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.29.3",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "clean": "turbo run clean",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2.8.7",
+    "typescript": "^5.9.3"
+  }
+}
