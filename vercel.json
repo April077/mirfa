@@ -1,10 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "apps/web/package.json", "use": "@vercel/next" },
-    { "src": "apps/api/index.ts", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "apps/api/index.ts" }
-  ]
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm turbo run build"
 }
