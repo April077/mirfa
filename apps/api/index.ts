@@ -7,7 +7,11 @@ import { decryptRoute } from "./routes/decrypt";
 import { fetchRoute } from "./routes/fetch"; // make sure you have this
 
 const app = Fastify({ logger: true });
-app.register(cors);
+app.register(cors, {
+  origin: "https://mirfa-web-five.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+});
 
 /* Validate MASTER KEY once */
 if (!process.env.MASTER_KEY) {
