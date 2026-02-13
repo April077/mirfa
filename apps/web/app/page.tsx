@@ -39,7 +39,6 @@ export default function Page() {
       if (!res.ok) throw new Error(data.error || "Encryption failed");
 
       setTxId(data.id);
-      setEncryptedResult(JSON.stringify(data, null, 2));
     } catch (err: any) {
       setError(err.message);
     } finally {
