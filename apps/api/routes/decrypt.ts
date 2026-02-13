@@ -21,19 +21,19 @@ export async function decryptRoute(app: FastifyInstance) {
         MASTER_KEY,
         record.dek_wrap_nonce,
         record.dek_wrapped,
-        record.dek_wrap_tag
+        record.dek_wrap_tag,
       );
 
       const decrypted = decryptAES(
         Buffer.from(dekHex, "hex"),
         record.payload_nonce,
         record.payload_ct,
-        record.payload_tag
+        record.payload_tag,
       );
 
       return reply.send(JSON.parse(decrypted));
     } catch (error) {
-      req.log.error(error);
+      req.log.error({ err: error }, "error occurred");
       return reply.status(400).send({
         error: "Decryption failed (possible tampering)",
       });

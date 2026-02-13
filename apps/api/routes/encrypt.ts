@@ -25,7 +25,7 @@ export async function encryptRoute(app: FastifyInstance) {
         JSON.stringify({
           partyId: body.partyId,
           payload: body.payload,
-        })
+        }),
       );
 
       const wrappedDek = encryptAES(MASTER_KEY, dek.toString("hex"));
@@ -46,7 +46,7 @@ export async function encryptRoute(app: FastifyInstance) {
 
       return reply.status(201).send(record);
     } catch (error) {
-      req.log.error(error);
+      req.log.error({ err: error }, "error occurred");
       return reply.status(500).send({ error: "Encryption failed" });
     }
   });
