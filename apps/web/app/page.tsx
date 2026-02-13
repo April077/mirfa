@@ -90,7 +90,7 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gray-50 text-black flex items-center justify-center p-6">
       <div className="w-full max-w-lg bg-white shadow-xl rounded-2xl p-8 space-y-6">
         <h1 className="text-2xl font-bold text-center text-gray-800">
           Secure Transaction
