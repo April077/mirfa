@@ -4,13 +4,15 @@ import "dotenv/config";
 
 import { encryptRoute } from "./routes/encrypt";
 import { decryptRoute } from "./routes/decrypt";
-import { fetchRoute } from "./routes/fetch"; // make sure you have this
+import { fetchRoute } from "./routes/fetch";
 
 const app = Fastify({ logger: true });
+
 app.register(cors, {
   origin: "https://mirfa-web-five.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 });
 
 /* Validate MASTER KEY once */
@@ -28,8 +30,12 @@ app.register(decryptRoute);
 app.register(fetchRoute);
 
 /* ---------------- Vercel Serverless Export ---------------- */
+let isReady = false;
 
 export default async function handler(req: any, res: any) {
-  await app.ready();
+  if (!isReady) {
+    await app.listen({ port: 0 });
+    isReady = true;
+  }
   app.server.emit("request", req, res);
 }
